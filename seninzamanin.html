@@ -4,27 +4,12 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script>
         window.onload = function () {
-
-            var getLink = document.URL;
-            var contentId = "";
-            var cmd = "";
-
-            if (getLink.toLowerCase().includes("content")) {
-                var splitLink = getLink.split("content=");
-                contentId = splitLink[1];
-            }
-
-            if (getLink.toLowerCase().includes("cmd")) {
-                var splitLink = getLink.split("cmd=");
-                cmd = splitLink[1];
-            }
-
             var userAgent = navigator.appVersion;
             if (userAgent.toLowerCase().includes("android")) {
-                android(contentId, cmd);
+                android();
             }
             else if (userAgent.toLowerCase().includes("iphone")) {
-                ios(contentId, cmd);
+                ios();
             }
             else {
                 window.location.assign("https://bireysel.turktelekom.com.tr/ozel-programlar/senin-zamanin/sayfalar/default.aspx");
@@ -32,15 +17,7 @@
         }
 
         function android(contentId, cmd) {
-            setTimeout(function () {
-                    window.location = "http://market.android.com/details?id=tr.com.turktelekom.seninzamanin";
-                }, 150);
-            if (contentId != "") {
-                window.location = "https://seninzamanin.turktelekom.com.tr/sz/deeplink=" + contentId;
-            }
-            else if(cmd.toLowerCase().includes("seninzamanin_deep_link")) {
-                window.location = "https://seninzamanin.turktelekom.com.tr/sz/deeplink=";
-            }
+            window.location = "http://market.android.com/details?id=tr.com.turktelekom.seninzamanin";
         }
 
         function ios(contentId, cmd) {
